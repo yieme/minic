@@ -1,6 +1,6 @@
 {
   "name": "minic",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Minimal JSONIC",
   "main": "index.js",
   "scripts": {
@@ -15,15 +15,19 @@
     "type": "git",
     "url": "https://github.com/yieme/minic"
   },
-  "keywords": ["json","jsonic","datapack"],
+  "keywords": [
+    "json",
+    "jsonic",
+    "datapack"
+  ],
   "author": "yieme",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yieme/minic/issues"
   },
-  "dependencies": { 
-    "make-error": "^1.0.2"
-      },
+  "dependencies": {
+    "jsonic": "^0.2.2"
+  },
   "devDependencies": {
     "object-attributes": "~0.1.1",
     "chai": "~1.10.0"
