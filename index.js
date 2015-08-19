@@ -13,11 +13,14 @@
 
    var jsonic    = require('jsonic');
    var minicKeys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-'.split(''); // supported single character keys
+   var commaFrom = ', ';
+   var commaTo   = '~`';
 
   function parse(str) {
     if ('string' !== typeof str) {
       throw new Error('String expected in minic parse, but encountered ' + typeof str);
     }
+    var commaFound = (str.indexOf(commaTo) >= 0);
     var fields = str.split(',');
     var changed = false;
     for (var i = fields.length - 1; i >= 0; i--) {
@@ -30,7 +33,15 @@
     if (changed) {
       str = fields.join(',');
     }
-    return jsonic(str);
+    var result = jsonic(str);
+    if (commaFound) {
+      var json = JSON.stringify(result)
+      for(;json.indexOf(commaTo) >= 0;) {
+        json=json.replace(commaTo, commaFrom);
+      }
+      result = JSON.parse(json);
+    }
+    return result;
   }
 
   function stringify(obj) {
@@ -42,6 +53,9 @@
     }
     if (str.substr(0,1) == '{') {
       str = str.substr(1, str.length-2);
+    }
+    for(;str.indexOf(commaFrom) >= 0;) {
+      str=str.replace(commaFrom, commaTo);
     }
     return str;
   }
