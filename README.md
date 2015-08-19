@@ -1,5 +1,5 @@
 # minic
-Minimal JSONIC, except:  <!-- [![build status](https://secure.travis-ci.org/yieme/minic.png)](http://travis-ci.org/yieme/minic) -->
+Minimal JSONIC, except:  
 - Colons are removed from single character attributes
 - Leading and trailing `{}` are removed
 
